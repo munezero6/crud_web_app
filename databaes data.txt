@@ -1,0 +1,119 @@
+Microsoft Windows [Version 10.0.22000.2538]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\xampp\mysql\bin>mysql -u root -p
+Enter password:
+Welcome to the MariaDB monitor.  Commands end with ; or \g.
+Your MariaDB connection id is 8
+Server version: 10.4.32-MariaDB mariadb.org binary distribution
+
+Copyright (c) 2000, 2018, Oracle, MariaDB Corporation Ab and others.
+
+Type 'help;' or '\h' for help. Type '\c' to clear the current input statement.
+
+MariaDB [(none)]> create database include 'db.php';
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near ''db.php'' at line 1
+MariaDB [(none)]> create database crud_app;
+Query OK, 1 row affected (0.328 sec)
+
+MariaDB [(none)]> create tableusers (    id INT AUTO_INCREMENT PRIMARY KEY,    name VARCHAR(100) NOT NULL);
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near 'tableusers (    id INT AUTO_INCREMENT PRIMARY KEY,    name VARCHAR(100) NOT N...' at line 1
+MariaDB [(none)]> create table users( id INT AUTO_INCREMENT PRIMARY KEY,    name VARCHAR(100) NOT NULL);
+ERROR 1046 (3D000): No database selected
+MariaDB [(none)]> use crud_app;
+Database changed
+MariaDB [crud_app]> create table users( id INT AUTO_INCREMENT PRIMARY KEY,    name VARCHAR(100) NOT NULL);
+Query OK, 0 rows affected (3.394 sec)
+
+MariaDB [crud_app]> show tables;
++--------------------+
+| Tables_in_crud_app |
++--------------------+
+| users              |
++--------------------+
+1 row in set (1.419 sec)
+
+MariaDB [crud_app]> desc users;
++-------+--------------+------+-----+---------+----------------+
+| Field | Type         | Null | Key | Default | Extra          |
++-------+--------------+------+-----+---------+----------------+
+| id    | int(11)      | NO   | PRI | NULL    | auto_increment |
+| name  | varchar(100) | NO   |     | NULL    |                |
++-------+--------------+------+-----+---------+----------------+
+2 rows in set (0.537 sec)
+
+MariaDB [crud_app]> show*from users;
+ERROR 1064 (42000): You have an error in your SQL syntax; check the manual that corresponds to your MariaDB server version for the right syntax to use near '*from users' at line 1
+MariaDB [crud_app]> select*from users;
+Empty set (0.440 sec)
+
+MariaDB [crud_app]> select*from users;
++----+----------------+
+| id | name           |
++----+----------------+
+|  1 | munezero josue |
+|  2 | munezero josue |
++----+----------------+
+2 rows in set (0.030 sec)
+
+MariaDB [crud_app]> select*from users;
++----+----------------+
+| id | name           |
++----+----------------+
+|  1 | munezero josue |
+|  2 | munezero josue |
++----+----------------+
+2 rows in set (0.003 sec)
+
+MariaDB [crud_app]> select*from users;
++----+----------------+
+| id | name           |
++----+----------------+
+|  1 | munezero josue |
+|  2 | munezero josue |
+|  3 | yve            |
++----+----------------+
+3 rows in set (0.001 sec)
+
+MariaDB [crud_app]> select*from users;
++----+----------------+
+| id | name           |
++----+----------------+
+|  1 | munezero josue |
+|  2 | munezero josue |
+|  3 | yve            |
++----+----------------+
+3 rows in set (0.001 sec)
+
+MariaDB [crud_app]> drop table users;
+Query OK, 0 rows affected (1.044 sec)
+
+MariaDB [crud_app]> show tables;
+Empty set (0.002 sec)
+
+MariaDB [crud_app]> CREATE TABLE users (    id INT AUTO_INCREMENT PRIMARY KEY,    name VARCHAR(100) NOT NULL,    hobbies TEXT NOT NULL);
+Query OK, 0 rows affected (0.592 sec)
+
+MariaDB [crud_app]> SELECT * FROM users ORDER BY id ASC;
++----+----------------+-----------------+
+| id | name           | hobbies         |
++----+----------------+-----------------+
+|  2 | munezero josue | playing cricket |
++----+----------------+-----------------+
+1 row in set (0.068 sec)
+
+MariaDB [crud_app]> SELECT * FROM users ORDER BY id ASC;
+Empty set (0.001 sec)
+
+MariaDB [crud_app]> SET @count = 0;
+Query OK, 0 rows affected (0.127 sec)
+
+MariaDB [crud_app]> UPDATE users SET id = @count := @count + 1;
+Query OK, 1 row affected (0.175 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+MariaDB [crud_app]> ALTER TABLE users AUTO_INCREMENT = 1;
+Query OK, 0 rows affected (0.531 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+MariaDB [crud_app]>

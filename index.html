@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD App</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <h2>CRUD Application</h2>
+    
+    <form action="process.php" method="POST">
+        <input type="hidden" name="id" id="userId">
+        <input type="text" name="name" id="userName" placeholder="Enter Name" required>
+        <button type="submit" name="save">Save</button>
+        <button type="submit" name="update">Update</button>
+    </form>
+
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Actions</th>
+        </tr>
+        <?php include 'fetch.php'; ?>
+    </table>
+
+    <script>
+        function editUser(id, name) {
+            document.getElementById("userId").value = id;
+            document.getElementById("userName").value = name;
+        }
+    </script>
+</body>
+</html>
